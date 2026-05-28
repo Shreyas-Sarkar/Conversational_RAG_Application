@@ -1,0 +1,33 @@
+services:
+  - type: web
+    name: rag-backend
+    env: python
+    buildCommand: "cd backend && pip install -r requirements.txt"
+    startCommand: "cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: JINA_API_KEY
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_KEY
+        sync: false
+      - key: CHROMA_API_KEY
+        sync: false
+      - key: CHROMA_TENANT
+        sync: false
+      - key: CHROMA_DATABASE
+        sync: false
+      - key: CHROMA_BACKEND
+        value: cloud
+      - key: CHROMA_HOST
+        value: api.trychroma.com
+      - key: CHROMA_PORT
+        value: "443"
+      - key: CHROMA_SSL
+        value: "true"
+      - key: PYTHON_VERSION
+        value: 3.13.0
+      - key: ALLOWED_ORIGINS
+        sync: false # Set this to the Streamlit Cloud URL

@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.dist-info/
+.venv/
+venv/
+env/
+
+# Environment files
+.env
+.env.local
+
+# Model cache
+.cache/
+huggingface/
+sentence_transformers/
+
+# ChromaDB persistence (if used locally)
+chroma_store/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Test artifacts
+.pytest_cache/
+htmlcov/
+.coverage
+
+# macOS
+.DS_Store
