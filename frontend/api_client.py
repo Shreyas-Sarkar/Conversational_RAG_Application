@@ -12,7 +12,12 @@ load_dotenv()
 
 class RAGAPIClient:
     def __init__(self, base_url: str | None = None):
-        self.base_url = base_url or os.getenv("BACKEND_URL", "http://localhost:8000")
+        import streamlit as st
+        try:
+            env_url = st.secrets.get("BACKEND_URL", os.getenv("BACKEND_URL", "http://localhost:8000"))
+        except Exception:
+            env_url = os.getenv("BACKEND_URL", "http://localhost:8000")
+        self.base_url = base_url or env_url
         self._last_sources: list[dict] = []
 
     def upload_document(self, file_bytes: bytes, filename: str, session_id: str):
